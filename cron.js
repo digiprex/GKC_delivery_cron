@@ -4,7 +4,7 @@ let db = new Sequelize(`mysql://digiprex:${process.env.dbPassword}@digiprexapi.c
 exports.func = async () => {
     try {         
         let orderUpdateQueryResult = await db.query(`select ou.id from gkc_husky_dev.order as o left outer join order_update as ou on ou.order_id = o.id
-            and ou.order_status_id in(1) and ou.is_latest=1 where o.is_deleted=0 and ou.is_deleted=0 and ou.id in(34)
+            and ou.order_status_id in(1) and ou.is_latest=1 where o.is_deleted=0 and ou.is_deleted=0 
             and ou.created_at <= DATE_SUB(NOW(), INTERVAL ${process.env.hour_delay} HOUR);`,
                     { type: QueryTypes.SELECT });
         if(orderUpdateQueryResult.length){
@@ -29,3 +29,4 @@ exports.func = async () => {
         console.error(error);
     }
 }
+this.func();
