@@ -1,0 +1,18 @@
+service: 
+tenant: 
+app: 
+
+provider:
+  name: aws
+  runtime: nodejs14.17.5
+  region: 'us-east-1'
+  timeout: 900
+
+plugins:
+  - serverless-dotenv-plugin
+
+functions:
+  transfer:
+    handler: handler.transfer
+    events:
+      - schedule: cron(0 1/6 * * * *)
