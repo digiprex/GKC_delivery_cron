@@ -15,4 +15,4 @@ functions:
   transfer:
     handler: handler.transfer
     events:
-      - schedule: cron(0 1/6 * * * *)
+      - schedule: rate(6 hours)
