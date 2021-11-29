@@ -29,4 +29,4 @@ exports.func = async () => {
         console.error(error);
     }
 }
-this.func();
+// this.func();
